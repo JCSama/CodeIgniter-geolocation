@@ -1,1 +1,1 @@
-# CodeIgniter-geolocalisation
+# CodeIgniter-geolocation
