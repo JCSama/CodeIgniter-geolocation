@@ -31,14 +31,16 @@ $config['api_version'] = 'v3';
 | The API KEY : You can get yours from here http://ipinfodb.com/register.php
 |
 */
-$config['api_key'] = 'YOUR_API_KEY';
+$config['api_key'] = 'YOUR_API_KEY_HERE';
 
 /*
 |--------------------------------------------------------------------------
 | FORMAT
 |--------------------------------------------------------------------------
 |
-| The default format is JSON, but you can change it to XML or RAW format
+| The default format is a php array, but you can change it to XML, JSON or RAW format
+|
+| $config['format'] = ''; Returns a PHP array
 |
 | $config['format'] = 'json';
 |
@@ -47,4 +49,4 @@ $config['api_key'] = 'YOUR_API_KEY';
 | $config['format'] = 'raw';
 |
 */
-$config['format'] = 'json';
+$config['format'] = '';

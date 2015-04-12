@@ -74,11 +74,11 @@ class Geolocation
     private $ip_address = '';
 
     /**
-     * Returned format
+     * Returned format, Leave it blank to return a PHP Array
      *
      * @var string
      */
-    private $format = 'json';
+    private $format = '';
 
     /**
      * Initialize the Geolocation library
@@ -123,7 +123,7 @@ class Geolocation
      *
      * @return Geolocation library
      */
-    public function set_key($api_key)
+    public function set_api_key($api_key)
     {
         $this->api_key = $api_key;
 
@@ -205,6 +205,9 @@ class Geolocation
             return false;
         }
 
+        $as_array = empty($this->format);
+        $this->format = $as_array ? 'json' : $this->format;
+
         $url = $this->api
             . $this->api_version . '/'
             . $type . '/'
@@ -212,17 +215,18 @@ class Geolocation
             . '&ip=' . $this->ip_address
             . '&format=' . $this->format;
 
-        return $this->get_result($url);
+        return $this->get_result($url, $as_array);
     }
 
     /**
      * Locate the IP Address and return the data
      *
      * @param $url string
+     * @param bool $as_array
      *
      * @return bool|string
      */
-    private function get_result($url){
+    private function get_result($url, $as_array = FALSE){
         $data = @file_get_contents($url);
 
         switch($this->format){
@@ -248,7 +252,7 @@ class Geolocation
             return FALSE;
         }
 
-        return $data;
+        return $as_array ? (array) $result : $data;
     }
 }
 

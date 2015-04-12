@@ -37,21 +37,21 @@ var_dump($country);
 
 // For more precision
 $city = $this->geolocation->get_city();
-var_dump($city);
-
-// Display error
-if(FALSE === $city)
+if($city === FALSE)
     var_dump($this->geolocation->get_error());
+else
+    var_dump($city);
 ```
 
 # Additional parameters
 
 You can change the result format within the config file,
+or leave it empty to return a PHP Array
 
 Open `application/config/geolocation.php` :
 
 ```php
-$config['format'] = 'json'; // available format : xml|raw|json
+$config['format'] = 'json'; // available format : xml|raw|json  or empty for php array
 ```
 
 # IpInfoDb API :
