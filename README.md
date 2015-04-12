@@ -1,7 +1,6 @@
 # CodeIgniter Geolocation Library
 
-CodeIgniter Geolocation library allows you to locate an IP Address using "ipinfodb" API, check http://ipinfodb.com for
-more information.
+CodeIgniter Geolocation library allows you to locate an IP Address using "ipinfodb" API.
 
 # Installation
 
