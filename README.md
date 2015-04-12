@@ -37,6 +37,10 @@ var_dump($country);
 // For more precision
 $city = $this->geolocation->get_city();
 var_dump($city);
+
+// Display error
+if($city === FALSE)
+    var_dump($this->geolocation->get_error());
 ```
 
 # Additional parameters
