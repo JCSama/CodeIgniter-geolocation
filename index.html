@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Codeigniter Geolocation Library by JCSama</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Codeigniter Geolocation Library</h1>
+      <h2 class="project-tagline"></h2>
+      <a href="https://github.com/JCSama/CodeIgniter-geolocation" class="btn">View on GitHub</a>
+      <a href="https://github.com/JCSama/CodeIgniter-geolocation/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/JCSama/CodeIgniter-geolocation/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="codeigniter-geolocation-library" class="anchor" href="#codeigniter-geolocation-library" aria-hidden="true"><span class="octicon octicon-link"></span></a>CodeIgniter Geolocation Library</h1>
+
+<p>CodeIgniter Geolocation library allows you to locate an IP Address using "ipinfodb" API.</p>
+
+<h1>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h1>
+
+<p>CodeIgniter Versoin &gt;= 2.x.x</p>
+
+<p>Copy the file <code>config/geolocation.php</code> to the <code>application/config</code> folder.</p>
+
+<p>Copy the file <code>libraries/geolocation.php</code> to the <code>application/libraries</code> folder.</p>
+
+<h1>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h1>
+
+<p>You need to subscribe to <a href="http://ipinfodb.com/register.php">http://ipinfodb.com/register.php</a> to get your API KEY and then,</p>
+
+<p>Open <code>application/config/geolocation.php</code> and put it there :</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-smi">$config</span>[<span class="pl-s"><span class="pl-pds">'</span>api_key<span class="pl-pds">'</span></span>] <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>YOUR_API_KEY<span class="pl-pds">'</span></span>;</span></pre></div>
+
+<p>After that, you can call the library within your controller for instance like following :</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">load</span><span class="pl-k">-&gt;</span>library(<span class="pl-s"><span class="pl-pds">'</span>Geolocation<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"><span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">load</span><span class="pl-k">-&gt;</span>config(<span class="pl-s"><span class="pl-pds">'</span>geolocation<span class="pl-pds">'</span></span>, <span class="pl-c1">true</span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$config</span> <span class="pl-k">=</span> <span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">config</span><span class="pl-k">-&gt;</span><span class="pl-smi">config</span>[<span class="pl-s"><span class="pl-pds">'</span>geolocation<span class="pl-pds">'</span></span>];</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">geolocation</span><span class="pl-k">-&gt;</span>initialize(<span class="pl-smi">$config</span>);</span>
+<span class="pl-s1"><span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">geolocation</span><span class="pl-k">-&gt;</span>set_ip_address(<span class="pl-smi">$ip</span>); <span class="pl-c">// IP to locate</span></span>
+<span class="pl-s1"><span class="pl-c">// $this-&gt;geolocation-&gt;set_format('json');</span></span>
+<span class="pl-s1"><span class="pl-c">// OR you can change the format within `config/geolocation.php` config file</span></span>
+<span class="pl-s1"><span class="pl-smi">$country</span> <span class="pl-k">=</span> <span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">geolocation</span><span class="pl-k">-&gt;</span>get_country();</span>
+<span class="pl-s1"><span class="pl-c1">var_dump</span>(<span class="pl-smi">$country</span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">// For more precision</span></span>
+<span class="pl-s1"><span class="pl-smi">$city</span> <span class="pl-k">=</span> <span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">geolocation</span><span class="pl-k">-&gt;</span>get_city();</span>
+<span class="pl-s1"><span class="pl-c1">var_dump</span>(<span class="pl-smi">$city</span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">// Display error</span></span>
+<span class="pl-s1"><span class="pl-k">if</span>(<span class="pl-c1">FALSE</span> <span class="pl-k">===</span> <span class="pl-smi">$city</span>)</span>
+<span class="pl-s1">    <span class="pl-c1">var_dump</span>(<span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">geolocation</span><span class="pl-k">-&gt;</span>get_error());</span></pre></div>
+
+<h1>
+<a id="additional-parameters" class="anchor" href="#additional-parameters" aria-hidden="true"><span class="octicon octicon-link"></span></a>Additional parameters</h1>
+
+<p>You can change the result format within the config file,</p>
+
+<p>Open <code>application/config/geolocation.php</code> :</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-smi">$config</span>[<span class="pl-s"><span class="pl-pds">'</span>format<span class="pl-pds">'</span></span>] <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>json<span class="pl-pds">'</span></span>; <span class="pl-c">// available format : xml|raw|json</span></span></pre></div>
+
+<h1>
+<a id="ipinfodb-api-" class="anchor" href="#ipinfodb-api-" aria-hidden="true"><span class="octicon octicon-link"></span></a>IpInfoDb API :</h1>
+
+<p>For more information about the API please visit : <a href="http://ipinfodb.com">http://ipinfodb.com</a></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/JCSama/CodeIgniter-geolocation">Codeigniter Geolocation Library</a> is maintained by <a href="https://github.com/JCSama">JCSama</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
+
