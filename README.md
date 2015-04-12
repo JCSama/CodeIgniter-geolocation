@@ -50,7 +50,7 @@ You can change the result format within the config file,
 Open `application/config/geolocation.php` :
 
 ```php
-$config['format'] = 'xml'; // or raw
+$config['format'] = 'json'; // available format : xml|raw|json
 ```
 
 # IpInfoDb API :
