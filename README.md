@@ -14,7 +14,7 @@ Copy the file `libraries/geolocation.php` to the `application/libraries` folder.
 
 You need to subscribe to http://ipinfodb.com/register.php to get your API KEY and then,
 
-Open `application/config/geolocation.php` and put your API KEY there :
+Open `application/config/geolocation.php` and put it there :
 
 ```php
 $config['api_key'] = 'YOUR_API_KEY';
