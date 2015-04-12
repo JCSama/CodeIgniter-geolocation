@@ -20,7 +20,7 @@ Open `application/config/geolocation.php` and put it there :
 $config['api_key'] = 'YOUR_API_KEY';
 ```
 
-After that, you can call the library in your controller for instance like following :
+After that, you can call the library within your controller for instance like following :
 
 ```php
 $this->load->library('Geolocation');
