@@ -7,6 +7,7 @@ CodeIgniter Geolocation library allows you to locate an IP Address using "ipinfo
 CodeIgniter Versoin >= 2.x.x
 
 Copy the file `config/geolocation.php` to the `application/config` folder.
+
 Copy the file `libraries/geolocation.php` to the `application/libraries` folder.
 
 # Usage
