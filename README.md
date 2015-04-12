@@ -30,7 +30,8 @@ $config = $this->config->config['geolocation'];
 
 $this->geolocation->initialize($config);
 $this->geolocation->set_ip_address($ip); // IP to locate
-// $this->geolocation->set_format('json'); // OR you can change the format within `config/geolocation.php` config file
+// $this->geolocation->set_format('json');
+// OR you can change the format within `config/geolocation.php` config file
 $country = $this->geolocation->get_country();
 var_dump($country);
 
@@ -39,7 +40,7 @@ $city = $this->geolocation->get_city();
 var_dump($city);
 
 // Display error
-if($city === FALSE)
+if(FALSE === $city)
     var_dump($this->geolocation->get_error());
 ```
 
